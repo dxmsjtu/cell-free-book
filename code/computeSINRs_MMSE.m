@@ -1,6 +1,6 @@
-	function SINRs = computeSINRs_MMSE(channel)
+function SINRs = computeSINRs_MMSE(channel)
 %Compute the SINR when using MMSE combining defined in (1.18) for Cellular Massive MIMO and in (1.25) for cell-free setup.
-%% INPUT:
+%% INPUT: 
 %channel        = M x K channel matrix where the kth column corresponds to
 %                 kth UE's channel, i.e., g_k in (1.18) for Cellular Massive MIMO 
 %                 or h_k in (1.25) for cell-free setup. 
