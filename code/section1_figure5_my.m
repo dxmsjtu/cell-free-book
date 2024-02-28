@@ -89,10 +89,9 @@ view(-52,28);
 set(gca,'fontsize',16);
 figure;
 hold on; box on;
-for l = 1:nbrAPs
-    
+for l = 1:nbrAPs    
     surf(reshape(real(UEpositions(:,l)),[Kdims Kdims]),reshape(imag(UEpositions(:,l)),[Kdims Kdims]),bandwidth*reshape(SEs_cellular(:,l,m),[Kdims Kdims]));
-    
+   
 end
 Post_plot;
 xlim([0 1000]);

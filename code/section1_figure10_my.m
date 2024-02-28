@@ -1,7 +1,6 @@
 %% This Matlab script can be used to reproduce Figure 1.10 in the monograph:
 %Ozlem Tugfe Demir, Emil Bjornson and Luca Sanguinetti (2021),"Foundations of User-Centric Cell-Free Massive MIMO", 
 %Foundations and Trends in Signal Processing: Vol. 14: No. 3-4, pp 162-472. DOI: 10.1561/2000000109
-%Foundations and Trends in Signal Processing: Vol. 14: No. 3-4,pp 162-472. DOI: 10.1561/2000000109
 %Empty workspace and close figures 
 close all; clear all;
 %Set the side length of the simulation area
@@ -15,7 +14,7 @@ APperdim = sqrt(nbrOfAntennas);
 APcellfree = linspace(squareLength/APperdim,squareLength,APperdim)-squareLength/APperdim/2;
 APcellfree = repmat(APcellfree,[APperdim 1]) + 1i*repmat(APcellfree,[APperdim 1])';
 %Number of realizations of the random UE locations
-nbrOfSetups = 100;  % 100000
+nbrOfSetups = 10000;  % default = 100000 
 %Number of UEs in the simulation setup
 K = 1;
 %Generate the random UE locations for all setups
@@ -54,7 +53,7 @@ for n = 1:nbrOfSetups
     SINR_cellular_small(n,:) = max(SINRs_smallcells,[],1);    
 end
 %% Plot simulation results
-figure; hold on; box on; LineWidth =12;
+figure; hold on; box on; LineWidth =2;
 plot(pow2db(sort(SINR_cellfree(:),'ascend')),linspace(0,1,nbrOfSetups*K),'b--','LineWidth',LineWidth);
 plot(pow2db(sort(SINR_cellular_small(:),'ascend')),linspace(0,1,nbrOfSetups*K),'r-.','LineWidth',LineWidth);
 plot(pow2db(sort(SINR_cellular_mMIMO(:),'ascend')),linspace(0,1,nbrOfSetups*K),'k','LineWidth',LineWidth);
@@ -63,3 +62,4 @@ ylabel('CDF','Interpreter','latex');
 legend({'Cell-free','Cellular: Small cells','Cellular: Massive MIMO'},'Interpreter','latex','Location','SouthEast');
 set(gca,'fontsize',16);
 xlim([0 60]);Post_plot;
+% plot(rand(2,13)); Post_plot;
